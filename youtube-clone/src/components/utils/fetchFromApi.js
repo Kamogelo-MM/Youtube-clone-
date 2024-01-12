@@ -1,4 +1,4 @@
-import Axios from "axios";
+import axios from "axios";
 
 const BASE_URL = "https://youtube-v31.p.rapidapi.com";
 
@@ -12,7 +12,7 @@ const options = {
     videoId: "M7FIvfx5J10",
   },
   headers: {
-    "X-RapidAPI-Key": REACT_APP_RAPID_KEY,
+    "X-RapidAPI-Key": process.env.REACT_RAPID_API_KEY,
     "X-RapidAPI-Host": "youtube-v31.p.rapidapi.com",
   },
 };
