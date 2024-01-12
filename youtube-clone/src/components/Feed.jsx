@@ -1,8 +1,14 @@
 import { useState, useEffect } from "react";
 import { Box, Stack, Typography } from "@mui/material";
-import SideBar from "./SideBar";
+import { SideBar, Videos } from "./";
+
+import { fetchFromApi } from "./utils/fetchFromApi";
 
 const Feed = () => {
+  useEffect(() => {
+    fetchFromApi(`.search?part=snippet"&q=${selectedCategory}`);
+  }, []);
+
   return (
     <Stack sx={{ flexDirection: { sx: "column", md: "row" } }}>
       <Box
@@ -12,15 +18,26 @@ const Feed = () => {
           px: { sx: 0, md: 2 },
         }}
       >
-        <SideBarr />
+        <SideBar />
         <Typography
           className="copyright"
           variant="body2"
           sx={{ mt: 1.5, color: "#fff" }}
         >
           {" "}
-          Copyright 2022 Kamo Mwdia
+          Copyright 2024 Kamogelo Mmolawa
         </Typography>
+      </Box>
+      <Box p={2} sx={{ overflowY: "auto", height: "90vh", flex: 2 }}>
+        <Typography
+          VARIANT="h4"
+          fontWeight="bold"
+          mb={2}
+          sx={{ color: "white" }}
+        >
+          New <span style={{ color: "#F31503" }}>Videos</span>
+        </Typography>
+        <Videos videos={[]} />
       </Box>
     </Stack>
   );
